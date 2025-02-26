@@ -1,0 +1,32 @@
+# Log files
+logs/
+*.log
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.pid
+cache/
+
+# Virtual environment
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs & cache
+logs/
+*.log
+*.sqlite3
+db.sqlite3
+*.db
+
+# Environment Variables
+.env
+.env.local
+
+# VS Code settings
+.vscode/
+
+# macOS system files
+.DS_Store
