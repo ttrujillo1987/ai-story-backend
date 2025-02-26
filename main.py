@@ -18,10 +18,6 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 # Set database
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-# Ensure SSL is required for Supabase
-if "supabase.co" in DATABASE_URL:
-    DATABASE_URL += "?sslmode=require"
-    
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine)
 Base = declarative_base()
