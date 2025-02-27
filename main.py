@@ -127,7 +127,6 @@ def delete_story(story_id: int):
 # API route to generate stories
 @app.post("/generate-story")
 def generate_story(request: StoryRequest):
-    session = SessionLocal()
     try:
         prompt_text = f"Write a short children's story about {request.topic} starring a {request.character} named {request.name}."
 
@@ -156,16 +155,6 @@ def generate_story(request: StoryRequest):
         dall_e_image_url = image_response.data[0].url
         uploaded_image = cloudinary.uploader.upload(dall_e_image_url)
         permanent_image_url = uploaded_image["secure_url"]
-
-        # Save to database
-        new_story = Story(name=request.name, 
-                          character=request.character, 
-                          topic=request.topic, 
-                          story=story, 
-                          image_url=permanent_image_url)
-        session.add(new_story)
-        session.commit()
-        session.close()
 
         return {"story": story, "image_url": permanent_image_url}
 
